@@ -1,5 +1,5 @@
 {
-  "name": "beacon-tools",
+  "name": "beacon-tool",
   "version": "1.0.0",
   "description": "Collection of bluetooth beaconing tools.",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "bt": "./index.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --recursive \"./{,!(node_modules)/**/}*.test.js\"",
+    "tdd": "mocha --recursive --watch \"./{,!(node_modules)/**/}*.test.js\""
   },
   "keywords": [
     "beaconing",
@@ -29,8 +30,8 @@
   },
   "repository": {
     "type": "git",
-      "url": "git+https://github.com/haensl/beacon-tools"
-    },
+    "url": "git+https://github.com/haensl/beacon-tools"
+  },
   "bugs": {
     "url": "git+https://github.com/haensl/beacon-tools/issues"
   },
@@ -38,5 +39,9 @@
   "license": "MIT",
   "dependencies": {
     "yargs": "^12.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
   }
 }
