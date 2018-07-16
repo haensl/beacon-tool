@@ -1,0 +1,42 @@
+{
+  "name": "beacon-tools",
+  "version": "1.0.0",
+  "description": "Collection of bluetooth beaconing tools.",
+  "main": "index.js",
+  "bin": {
+    "bt": "./index.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "beaconing",
+    "tools",
+    "bluetooth",
+    "beacon",
+    "altbeacon",
+    "ibeacon",
+    "eddystone"
+  ],
+  "author": {
+    "name": "HP Dietz",
+    "email": "h.p.dietz@gmail.com",
+    "twitter": "@h_p_d",
+    "url": "https://hpdietz.com"
+  },
+  "engines": {
+    "node": ">= 8.11.3"
+  },
+  "repository": {
+    "type": "git",
+      "url": "git+https://github.com/haensl/beacon-tools"
+    },
+  "bugs": {
+    "url": "git+https://github.com/haensl/beacon-tools/issues"
+  },
+  "homepage": "https://github.com/haensl/beacon-tools#readme",
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^12.0.1"
+  }
+}
