@@ -3,10 +3,11 @@ const hexRegex = /^[a-f0-9]+$/i;
 
 const signals = {
   altBeacon: {
-    length: 40,
+    length: 40
   },
   iBeacon: {
-    length: 32
+    length: 32,
+    dashes: [8, 12, 16, 20]
   },
   eddystoneUid: {
     length: 32,
@@ -15,7 +16,8 @@ const signals = {
     },
     instanceId: {
       length: 12
-    }
+    },
+    dashes: [20]
   }
 };
 
@@ -40,23 +42,55 @@ const getLengthForFormat = (format) => {
   return length;
 };
 
-const generate = (format) => {
-  let signal = '';
-
-  while (signal.length < getLengthForFormat(format)) {
-    signal = `${signal}${rand.randHex()}`;
+const beautifyPayload = (payload, format) => {
+  let beautifiedPayload = `${payload}`;
+  let dashes = [];
+  switch (format.toLowerCase()) {
+    case 'ibeacon':
+      dashes = dashes.concat(signals.iBeacon.dashes);
+      break;
+    case 'altbeacon':
+      break;
+    case 'eddystone-uid':
+    case 'eddystoneuid':
+      dashes = dashes.concat(signals.eddystoneUid.dashes);
+      break;
+    default:
+      throw new Error(`Unknown format: ${format}`);
   }
 
-  return signal.toUpperCase();
+  if (dashes.length) {
+    beautifiedPayload = dashes.reduce((slices, dashIndex, i, dashes) => {
+      slices.push(beautifiedPayload.slice(dashes[i-1] || 0, dashIndex));
+      return slices;
+    }, []).concat([ beautifiedPayload.slice(dashes[dashes.length -1 ])]).join('-');
+  }
+
+  return beautifiedPayload;
 };
 
-const validate = (signal, format) => {
-  const normalizedSignal = signal.replace(/-/g, '');
-  return hexRegex.test(normalizedSignal)
-    && normalizedSignal.length === getLengthForFormat(format);
+const generate = (format, pretty = false) => {
+  let payload = '';
+
+  while (payload.length < getLengthForFormat(format)) {
+    payload = `${payload}${rand.randHex()}`;
+  }
+
+  if (pretty) {
+    return beautifyPayload(payload.toUpperCase(), format);
+  }
+
+  return payload.toUpperCase();
+};
+
+const validate = (payload, format) => {
+  const normalizedPayload = payload.replace(/-/g, '');
+  return hexRegex.test(normalizedPayload)
+    && normalizedPayload.length === getLengthForFormat(format);
 };
 
 module.exports = {
+  beautifyPayload,
   generate,
   validate,
   signals

@@ -29,6 +29,16 @@ describe('Signal Service', () => {
       it('generates a string of 32 characters', () => {
         expect(uuid.length).to.equal(32);
       });
+
+      describe('pretty', () => {
+        beforeEach(() => {
+          uuid = signal.generate('ibeacon', true);
+        });
+
+        it('generates a beautified iBeacon UUID', () => {
+          expect(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(uuid)).to.be.true;
+        });
+      });
     });
 
     describe('EddystoneUID', () => {
@@ -45,6 +55,16 @@ describe('Signal Service', () => {
       it('generates a string of 32 characters', () => {
         expect(uuid.length).to.equal(32);
       });
+
+      describe('pretty', () => {
+        beforeEach(() => {
+          uuid = signal.generate('eddystoneUid', true);
+        });
+
+        it('generates a beautified Eddystone UUID', () => {
+          expect(/^[a-f0-9]{20}-[a-f0-9]{12}$/i.test(uuid)).to.be.true;
+        });
+      });
     });
 
     describe('AltBeacon', () => {
@@ -60,6 +80,16 @@ describe('Signal Service', () => {
 
       it('generates a string of 40 characters', () => {
         expect(beaconId.length).to.equal(40);
+      });
+
+      describe('pretty', () => {
+        beforeEach(() => {
+          beaconId = signal.generate('altbeacon', true);
+        });
+
+        it('generates a beautified AltBeacon BeaconId', () => {
+          expect(/^[a-f0-9]{40}$/i.test(beaconId)).to.be.true;
+        });
       });
     });
 

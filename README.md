@@ -17,26 +17,9 @@ Via Yarn:
 
 ## Usage
 
-### Synopsis
-
-```bash
-bt <command> [options]
-
-Commands:
-  bt gen <format>           Generate a signal payload for the given format.
-                                                             [aliases: generate]
-  bt val <format> <payload>  Validate if a signal conforms to the given format.
-                                                             [aliases: validate]
-  bt completion             generate bash completion script
-
-Options:
-  --version  Show version number                                       [boolean]
-  -h         Show help                                                 [boolean]
-```
-
 ### Signal generation
 
-#### `bt gen <format>`
+#### `beaconTool.generate(format)`
 
 Generates a payload for the given format.
 
@@ -50,11 +33,16 @@ Beacon Tool tries to be smart about spelling, e.g. `Eddystone-UID`, `eddystoneui
 
 #### Example
 
-`bt gen iBeacon`
+```javascript
+const beaconTool = require('beacon-tool');
+
+const uuid = beaconTool.generate('iBeacon');
+console.log(uuid);
+```
 
 ### Signal validation
 
-#### `bt val <format> <payload>`
+#### `beaconTool.validate(signal, format)`
 
 Validates a signal payload against a given format.
 
@@ -62,7 +50,17 @@ See [Recognized Formats](#formats) for information on format specification.
 
 #### Example
 
-`bt val iBeacon C8011DA4-47BE-4581-847E-C549A0E5E074`
+```javascript
+const beaconTool = require('beacon-tool');
+
+const isValidIBeacon = beaconTool.validate('259771A0-2DFB-4554-B817-2FBFDB5DB1A7', 'iBeacon');
+
+if (isValidIBeacon) {
+  console.info('valid');
+} else {
+  console.info('error');
+}
+```
 
 ## [Changelog](CHANGELOG.md)
 
