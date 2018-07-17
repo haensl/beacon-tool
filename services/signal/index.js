@@ -43,6 +43,10 @@ const getLengthForFormat = (format) => {
 };
 
 const beautifyPayload = (payload, format) => {
+  if (!validate(payload, format)) {
+    throw new Error(`Invalid payload/format: ${payload} is not a valid ${format} payload!`);
+  }
+
   let beautifiedPayload = `${payload}`;
   let dashes = [];
   switch (format.toLowerCase()) {

@@ -105,12 +105,24 @@ describe('Signal Service', () => {
       let uuid;
 
       describe('valid', () => {
-        beforeEach(() => {
-          uuid = signal.generate('ibeacon');
+        describe('not pretty', () => {
+          beforeEach(() => {
+            uuid = signal.generate('ibeacon');
+          });
+
+          it('returns true', () => {
+            expect(signal.validate(uuid, 'ibeacon')).to.be.true;
+          });
         });
 
-        it('returns true', () => {
-          expect(signal.validate(uuid, 'ibeacon')).to.be.true;
+        describe('pretty', () => {
+          beforeEach(() => {
+            uuid = signal.generate('ibeacon', true);
+          });
+
+          it('returns true', () => {
+            expect(signal.validate(uuid, 'ibeacon')).to.be.true;
+          });
         });
       });
 
@@ -141,12 +153,24 @@ describe('Signal Service', () => {
       let uuid;
 
       describe('valid', () => {
-        beforeEach(() => {
-          uuid = signal.generate('eddystone-uid');
+        describe('not pretty', () => {
+          beforeEach(() => {
+            uuid = signal.generate('eddystone-uid');
+          });
+
+          it('returns true', () => {
+            expect(signal.validate(uuid, 'eddystone-uid')).to.be.true;
+          });
         });
 
-        it('returns true', () => {
-          expect(signal.validate(uuid, 'eddystone-uid')).to.be.true;
+        describe('pretty', () => {
+          beforeEach(() => {
+            uuid = signal.generate('eddystone-uid', true);
+          });
+
+          it('returns true', () => {
+            expect(signal.validate(uuid, 'eddystone-uid')).to.be.true;
+          });
         });
       });
 
@@ -205,6 +229,50 @@ describe('Signal Service', () => {
             expect(signal.validate(beaconId, 'altbeacon')).to.be.false;
           });
         });
+      });
+    });
+  });
+
+  describe('beautifyPayload()', () => {
+    describe('iBeacon', () => {
+      let uuid;
+
+      beforeEach(() => {
+        uuid = signal.beautifyPayload(signal.generate('iBeacon'), 'ibeacon');
+      });
+
+      it('adds dashes at the appropriate places', () => {
+        expect(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(uuid)).to.be.true;
+      });
+    });
+
+    describe('Eddystone UID', () => {
+      let uuid;
+
+      beforeEach(() => {
+        uuid = signal.beautifyPayload(signal.generate('eddystone-uid'), 'eddystone-uid');
+      });
+
+      it('adds dashes at the appropriate places', () => {
+        expect(/^[a-f0-9]{20}-[a-f0-9]{12}$/i.test(uuid)).to.be.true;
+      });
+    });
+
+    describe('AltBeacon', () => {
+      let beaconId;
+
+      beforeEach(() => {
+        beaconId = signal.beautifyPayload(signal.generate('altbeacon'), 'altbeacon');
+      });
+
+      it('does not add any dashes', () => {
+        expect(/^[a-f0-9]{40}$/i.test(beaconId)).to.be.true;
+      });
+    });
+
+    describe('Invalid payload/format', () => {
+      it('throws', () => {
+        expect(() => signal.beautifyPayload(signal.generate('altbeacon'), 'ibeacon')).to.throw;
       });
     });
   });
