@@ -3,7 +3,7 @@ Collection of bluetooth beaconing tools.
 
 ## Features
 
-Beacon Tool allows you to generate and validate various bluetooth beacon signals.
+Beacon Tool allows you to generate and validate various bluetooth beacon payloads.
 
 ## Installation
 
@@ -17,7 +17,7 @@ Via Yarn:
 
 ## Usage
 
-### Signal generation
+### Payload generation
 
 #### `beaconTool.generate(format)`
 
@@ -40,9 +40,9 @@ const uuid = beaconTool.generate('iBeacon');
 console.log(uuid);
 ```
 
-### Signal validation
+### Payload validation
 
-#### `beaconTool.validate(signal, format)`
+#### `beaconTool.validate(payload, format)`
 
 Validates a signal payload against a given format.
 
@@ -60,6 +60,26 @@ if (isValidIBeacon) {
 } else {
   console.info('error');
 }
+```
+
+### Payload beautifier
+
+#### `beaconTool.beautifyPayload(payload, format)`
+
+Beautifies, i.e. adds dashes, to a given payload as specified for the given format. `beautifyPayload()` returns a new string.
+
+*AltBeacon specification does not specify any representation of it's beacon id with dashes, therefore the result of beautifying an AltBeacon payload will not have any effect.*
+
+See [Recognized Formats](#formats) for information on format specification.
+
+#### Example
+
+```javascript
+const beaconTool = require('beacon-tool');
+
+const beautifiedPayload = beaconTool.beatifyPayload('259771A02DFB4554B8172FBFDB5DB1A7', 'iBeacon');
+
+console.log(beatifiedPayload);
 ```
 
 ## [Changelog](CHANGELOG.md)
