@@ -68,7 +68,7 @@ if (isValidIBeacon) {
 
 Beautifies, i.e. adds dashes, to a given payload as specified for the given format. `beautifyPayload()` returns a new string.
 
-*AltBeacon specification does not specify any representation of it's beacon id with dashes, therefore the result of beautifying an AltBeacon payload will not have any effect.*
+*AltBeacon specification does not specify any representation of it's beacon id with dashes, therefore beautifying an AltBeacon payload will not have any effect.*
 
 See [Recognized Formats](#formats) for information on format specification.
 
