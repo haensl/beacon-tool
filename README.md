@@ -152,7 +152,7 @@ Tries to identify a given payload.
 
 ##### `(string) => array`
 
-##### Example
+#### Example
 
 ```javascript
 const beaconTool = require('beacon-tool');
@@ -192,7 +192,7 @@ A signal information object.
 
 See [signals](#signals) for futher information.
 
-##### Example
+#### Example
 
 ```javascript
 const beaconTool = require('beacon-tool');
