@@ -19,7 +19,7 @@ describe('Signal Service', () => {
       let uuid;
 
       beforeEach(() => {
-        uuid = signal.generate('ibeacon');
+        uuid = signal.generate(signal.signals.iBeacon.key);
       });
 
       it('generates a hex string', () => {
@@ -32,7 +32,7 @@ describe('Signal Service', () => {
 
       describe('pretty', () => {
         beforeEach(() => {
-          uuid = signal.generate('ibeacon', true);
+          uuid = signal.generate(signal.signals.iBeacon.key, true);
         });
 
         it('generates a beautified iBeacon UUID', () => {
@@ -45,7 +45,7 @@ describe('Signal Service', () => {
       let uuid;
 
       beforeEach(() => {
-        uuid = signal.generate('eddystone-uid');
+        uuid = signal.generate(signal.signals.eddystoneUid.key);
       });
 
       it('generates a hex string', () => {
@@ -58,7 +58,7 @@ describe('Signal Service', () => {
 
       describe('pretty', () => {
         beforeEach(() => {
-          uuid = signal.generate('eddystoneUid', true);
+          uuid = signal.generate(signal.signals.eddystoneUid.key, true);
         });
 
         it('generates a beautified Eddystone UUID', () => {
@@ -71,7 +71,7 @@ describe('Signal Service', () => {
       let beaconId;
 
       beforeEach(() => {
-        beaconId = signal.generate('altbeacon');
+        beaconId = signal.generate(signal.signals.altBeacon.key);
       });
 
       it('generates a hex string', () => {
@@ -84,7 +84,7 @@ describe('Signal Service', () => {
 
       describe('pretty', () => {
         beforeEach(() => {
-          beaconId = signal.generate('altbeacon', true);
+          beaconId = signal.generate(signal.signals.altBeacon.key, true);
         });
 
         it('generates a beautified AltBeacon BeaconId', () => {
@@ -107,21 +107,21 @@ describe('Signal Service', () => {
       describe('valid', () => {
         describe('not pretty', () => {
           beforeEach(() => {
-            uuid = signal.generate('ibeacon');
+            uuid = signal.generate(signal.signals.iBeacon.key);
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, 'ibeacon')).to.be.true;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.true;
           });
         });
 
         describe('pretty', () => {
           beforeEach(() => {
-            uuid = signal.generate('ibeacon', true);
+            uuid = signal.generate(signal.signals.iBeacon.key, true);
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, 'ibeacon')).to.be.true;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.true;
           });
         });
       });
@@ -129,11 +129,11 @@ describe('Signal Service', () => {
       describe('invalid', () => {
         describe('length', () => {
           beforeEach(() => {
-            uuid = signal.generate('altbeacon');
+            uuid = signal.generate(signal.signals.altBeacon.key);
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, 'ibeacon')).to.be.false;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.false;
           });
         });
 
@@ -143,7 +143,7 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, 'ibeacon')).to.be.false;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.false;
           });
         });
       });
@@ -155,21 +155,21 @@ describe('Signal Service', () => {
       describe('valid', () => {
         describe('not pretty', () => {
           beforeEach(() => {
-            uuid = signal.generate('eddystone-uid');
+            uuid = signal.generate(signal.signals.eddystoneUid.key);
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, 'eddystone-uid')).to.be.true;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.true;
           });
         });
 
         describe('pretty', () => {
           beforeEach(() => {
-            uuid = signal.generate('eddystone-uid', true);
+            uuid = signal.generate(signal.signals.eddystoneUid.key, true);
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, 'eddystone-uid')).to.be.true;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.true;
           });
         });
       });
@@ -177,11 +177,11 @@ describe('Signal Service', () => {
       describe('invalid', () => {
         describe('length', () => {
           beforeEach(() => {
-            uuid = signal.generate('altbeacon');
+            uuid = signal.generate(signal.signals.altBeacon.key);
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, 'eddystone-uid')).to.be.false;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.false;
           });
         });
 
@@ -191,7 +191,7 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, 'eddystone-uid')).to.be.false;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.false;
           });
         });
       });
@@ -201,22 +201,22 @@ describe('Signal Service', () => {
       let beaconId;
       describe('valid', () => {
         beforeEach(() => {
-          beaconId = signal.generate('altbeacon');
+          beaconId = signal.generate(signal.signals.altBeacon.key);
         });
 
         it('returns true', () => {
-          expect(signal.validate(beaconId, 'altbeacon')).to.be.true;
+          expect(signal.validate(beaconId, signal.signals.altBeacon.key)).to.be.true;
         });
       });
 
       describe('invalid', () => {
         describe('length', () => {
           beforeEach(() => {
-            beaconId = signal.generate('ibeacon');
+            beaconId = signal.generate(signal.signals.iBeacon.key);
           });
 
           it('returns false', () => {
-            expect(signal.validate(beaconId, 'altbeacon')).to.be.false;
+            expect(signal.validate(beaconId, signal.signals.altBeacon.key)).to.be.false;
           });
         });
 
@@ -226,19 +226,19 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(beaconId, 'altbeacon')).to.be.false;
+            expect(signal.validate(beaconId, signal.signals.altBeacon.key)).to.be.false;
           });
         });
       });
     });
   });
 
-  describe('beautifyPayload()', () => {
+  describe('beautify()', () => {
     describe('iBeacon', () => {
       let uuid;
 
       beforeEach(() => {
-        uuid = signal.beautifyPayload(signal.generate('iBeacon'), 'ibeacon');
+        uuid = signal.beautify(signal.generate(signal.signals.iBeacon.key), signal.signals.iBeacon.key);
       });
 
       it('adds dashes at the appropriate places', () => {
@@ -250,7 +250,7 @@ describe('Signal Service', () => {
       let uuid;
 
       beforeEach(() => {
-        uuid = signal.beautifyPayload(signal.generate('eddystone-uid'), 'eddystone-uid');
+        uuid = signal.beautify(signal.generate(signal.signals.eddystoneUid.key), signal.signals.eddystoneUid.key);
       });
 
       it('adds dashes at the appropriate places', () => {
@@ -262,7 +262,7 @@ describe('Signal Service', () => {
       let beaconId;
 
       beforeEach(() => {
-        beaconId = signal.beautifyPayload(signal.generate('altbeacon'), 'altbeacon');
+        beaconId = signal.beautify(signal.generate(signal.signals.altBeacon.key), signal.signals.altBeacon.key);
       });
 
       it('does not add any dashes', () => {
@@ -270,9 +270,171 @@ describe('Signal Service', () => {
       });
     });
 
-    describe('Invalid payload/format', () => {
+    describe('Invalid payload-format combination', () => {
       it('throws', () => {
-        expect(() => signal.beautifyPayload(signal.generate('altbeacon'), 'ibeacon')).to.throw;
+        expect(() => signal.beautify(signal.generate(signal.signals.altBeacon.key), signal.signals.iBeacon.key)).to.throw;
+      });
+    });
+  });
+
+  describe('identify', () => {
+    let candidates;
+    describe('32 chars', () => {
+      describe('lowercase, no dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('de93f975b5d74c9ea8a606fd7cf9d45b');
+        });
+
+        it('includes ibeacon', () => {
+          expect(candidates).to.include(signal.signals.iBeacon.key);
+        });
+
+        it('returns Eddystone UID', () => {
+          expect(candidates).to.include(signal.signals.eddystoneUid.key);
+        });
+
+        it('returns 2 candidates', () => {
+          expect(candidates.length).to.equal(2);
+        });
+      });
+
+      describe('mixed case, no dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('dE93F975b5D74c9EA8a606fd7cf9d45b');
+        });
+
+        it('includes ibeacon', () => {
+          expect(candidates).to.include(signal.signals.iBeacon.key);
+        });
+
+        it('returns Eddystone UID', () => {
+          expect(candidates).to.include(signal.signals.eddystoneUid.key);
+        });
+
+        it('returns 2 candidates', () => {
+          expect(candidates.length).to.equal(2);
+        });
+      });
+
+
+      describe('uppercase, no dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('DE93F975B5D74C9EA8A606FD7CF9D45B');
+        });
+
+        it('includes ibeacon', () => {
+          expect(candidates).to.include(signal.signals.iBeacon.key);
+        });
+
+        it('returns Eddystone UID', () => {
+          expect(candidates).to.include(signal.signals.eddystoneUid.key);
+        });
+
+        it('returns 2 candidates', () => {
+          expect(candidates.length).to.equal(2);
+        });
+      });
+
+      describe('iBeacon dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('DE93F975-B5D7-4C9E-A8A6-06FD7CF9D45B');
+        });
+
+        it('includes ibeacon', () => {
+          expect(candidates).to.include(signal.signals.iBeacon.key);
+        });
+
+        it('returns 1 candidates', () => {
+          expect(candidates.length).to.equal(1);
+        });
+      });
+
+      describe('Eddystone UID dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('DE93F975B5D7-4C9EA8A606FD7CF9D45B');
+        });
+
+        it('includes eddystone uid', () => {
+          expect(candidates).to.include(signal.signals.eddystoneUid.key);
+        });
+
+        it('returns 1 candidates', () => {
+          expect(candidates.length).to.equal(1);
+        });
+      });
+    });
+
+    describe('40 characters', () => {
+      describe('lowercase, no dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('de93f975b5d74c9ea8a606fd7cf9d45babcdef01');
+        });
+
+        it('includes AltBeacon', () => {
+          expect(candidates).to.include(signal.signals.altBeacon.key);
+        });
+
+        it('returns 1 candidate', () => {
+          expect(candidates.length).to.equal(1);
+        });
+      });
+
+      describe('mixed case, no dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('dE93F975b5D74c9EA8a606fd7cf9d45babcdef01');
+        });
+
+        it('includes AltBeacon', () => {
+          expect(candidates).to.include(signal.signals.altBeacon.key);
+        });
+
+        it('returns 1 candidate', () => {
+          expect(candidates.length).to.equal(1);
+        });
+      });
+
+      describe('uppercase, no dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('DE93F975B5D74C9EA8A606FD7CF9D45BABCDEF01');
+        });
+
+        it('includes AltBeacon', () => {
+          expect(candidates).to.include(signal.signals.altBeacon.key);
+        });
+
+        it('returns 1 candidates', () => {
+          expect(candidates.length).to.equal(1);
+        });
+      });
+
+      describe('dashes', () => {
+        beforeEach(() => {
+          candidates = signal.identify('DE93F975B-5D74C9EA8A606FD7CF-9D45BABCDEF01');
+        });
+
+        it('returns no candidates', () => {
+          expect(candidates.length).to.equal(0);
+        });
+      });
+    });
+
+    describe('10 characters', () => {
+      beforeEach(() => {
+        candidates = signal.identify('ADE93F975B');
+      });
+
+      it('returns no candidates', () => {
+        expect(candidates.length).to.equal(0);
+      });
+    });
+
+    describe('50 characters', () => {
+      beforeEach(() => {
+        candidates = signal.identify('ADE93F975BADE93F975BADE93F975BADE93F975BADE93F975B');
+      });
+
+      it('returns no candidates', () => {
+        expect(candidates.length).to.equal(0);
       });
     });
   });
