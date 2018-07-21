@@ -125,7 +125,7 @@ const get = (format) => {
     case signals.altBeacon.key:
       return signals.altBeacon;
     case signals.eddystoneUrl.key:
-      return signals.eddystoneUrl;
+      return signals.eddystoneUid;
     default:
       throw new Error(`Unknown format: ${format}`);
   }
