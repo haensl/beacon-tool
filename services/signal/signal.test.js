@@ -111,7 +111,8 @@ describe('Signal Service', () => {
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.true;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key))
+              .to.be.true;
           });
         });
 
@@ -121,7 +122,8 @@ describe('Signal Service', () => {
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.true;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key))
+              .to.be.true;
           });
         });
       });
@@ -133,7 +135,8 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.false;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key))
+              .to.be.false;
           });
         });
 
@@ -143,7 +146,8 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, signal.signals.iBeacon.key)).to.be.false;
+            expect(signal.validate(uuid, signal.signals.iBeacon.key))
+              .to.be.false;
           });
         });
       });
@@ -159,7 +163,8 @@ describe('Signal Service', () => {
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.true;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key))
+              .to.be.true;
           });
         });
 
@@ -169,7 +174,8 @@ describe('Signal Service', () => {
           });
 
           it('returns true', () => {
-            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.true;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key))
+              .to.be.true;
           });
         });
       });
@@ -181,7 +187,8 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.false;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key))
+              .to.be.false;
           });
         });
 
@@ -191,7 +198,8 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(uuid, signal.signals.eddystoneUid.key)).to.be.false;
+            expect(signal.validate(uuid, signal.signals.eddystoneUid.key))
+              .to.be.false;
           });
         });
       });
@@ -205,7 +213,8 @@ describe('Signal Service', () => {
         });
 
         it('returns true', () => {
-          expect(signal.validate(beaconId, signal.signals.altBeacon.key)).to.be.true;
+          expect(signal.validate(beaconId, signal.signals.altBeacon.key))
+            .to.be.true;
         });
       });
 
@@ -216,7 +225,8 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(beaconId, signal.signals.altBeacon.key)).to.be.false;
+            expect(signal.validate(beaconId, signal.signals.altBeacon.key))
+              .to.be.false;
           });
         });
 
@@ -226,7 +236,8 @@ describe('Signal Service', () => {
           });
 
           it('returns false', () => {
-            expect(signal.validate(beaconId, signal.signals.altBeacon.key)).to.be.false;
+            expect(signal.validate(beaconId, signal.signals.altBeacon.key))
+              .to.be.false;
           });
         });
       });
@@ -238,7 +249,10 @@ describe('Signal Service', () => {
       let uuid;
 
       beforeEach(() => {
-        uuid = signal.beautify(signal.generate(signal.signals.iBeacon.key), signal.signals.iBeacon.key);
+        uuid = signal.beautify(
+          signal.generate(signal.signals.iBeacon.key),
+          signal.signals.iBeacon.key
+        );
       });
 
       it('adds dashes at the appropriate places', () => {
@@ -250,7 +264,10 @@ describe('Signal Service', () => {
       let uuid;
 
       beforeEach(() => {
-        uuid = signal.beautify(signal.generate(signal.signals.eddystoneUid.key), signal.signals.eddystoneUid.key);
+        uuid = signal.beautify(
+          signal.generate(signal.signals.eddystoneUid.key),
+          signal.signals.eddystoneUid.key
+        );
       });
 
       it('adds dashes at the appropriate places', () => {
@@ -262,7 +279,10 @@ describe('Signal Service', () => {
       let beaconId;
 
       beforeEach(() => {
-        beaconId = signal.beautify(signal.generate(signal.signals.altBeacon.key), signal.signals.altBeacon.key);
+        beaconId = signal.beautify(
+          signal.generate(signal.signals.altBeacon.key),
+          signal.signals.altBeacon.key
+        );
       });
 
       it('does not add any dashes', () => {
@@ -272,7 +292,10 @@ describe('Signal Service', () => {
 
     describe('Invalid payload-format combination', () => {
       it('throws', () => {
-        expect(() => signal.beautify(signal.generate(signal.signals.altBeacon.key), signal.signals.iBeacon.key)).to.throw;
+        expect(() => signal.beautify(
+          signal.generate(signal.signals.altBeacon.key),
+          signal.signals.iBeacon.key)
+        ).to.throw;
       });
     });
   });

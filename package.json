@@ -1,12 +1,14 @@
 {
   "name": "beacon-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Collection of bluetooth beaconing tools.",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive \"./{,!(node_modules)/**/}*.test.js\"",
     "tdd": "mocha --recursive --watch \"./{,!(node_modules)/**/}*.test.js\"",
-    "lint": "eslint -c .eslintrc.json './{,!(node_modules)/**/*.js}'"
+    "lint": "eslint -c .eslintrc.json './{,!(node_modules)/**/*.js}'",
+    "precommit": "npm run lint && npm test",
+    "prepush": "npm run lint && npm test"
   },
   "keywords": [
     "beaconing",
@@ -37,8 +39,9 @@
   "homepage": "https://github.com/haensl/beacon-tool#readme",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "eslint": "^5.1.0",
+    "husky": "^1.1.4",
     "mocha": "^5.2.0"
   }
 }

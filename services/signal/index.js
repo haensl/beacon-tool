@@ -110,9 +110,13 @@ const identify = (payload) => {
   let candidates;
 
   if (/-/.test(payload)) {
-    candidates = knownSignals.filter((signal) => signal.regex.test(payload));
+    candidates = knownSignals.filter(
+      (signal) => signal.regex.test(payload)
+    );
   } else {
-    candidates = knownSignals.filter((signal) => signal.length === payload.length);
+    candidates = knownSignals.filter(
+      (signal) => signal.length === payload.length
+    );
   }
 
   return candidates.map((signal) => signal.key);
