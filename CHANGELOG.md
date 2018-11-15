@@ -1,3 +1,6 @@
+## 1.1.0
+* [#6: Integrate CI deployment.](https://github.com/haensl/beacon-tool/issues/6)
+
 ## 1.0.3
 * [#5: Update dependencies.](https://github.com/haensl/beacon-tool/issues/5)
 
