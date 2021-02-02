@@ -1,3 +1,7 @@
+## 1.1.3
+* [#15: Update dependencies.](https://github.com/haensl/beacon-tool/issues/15)
+* Internalize eslint configuration into `package.json`.
+
 ## 1.1.2
 * [#11: Update dependencies.](https://github.com/haensl/beacon-tool/issues/11)
 

@@ -339,7 +339,6 @@ describe('Signal Service', () => {
         });
       });
 
-
       describe('uppercase, no dashes', () => {
         beforeEach(() => {
           candidates = signal.identify('DE93F975B5D74C9EA8A606FD7CF9D45B');
