@@ -69,9 +69,9 @@ const beautify = (payload, format) => {
 
   if (dashes.length) {
     beautifiedPayload = dashes.reduce((slices, dashIndex, i, dashes) => {
-      slices.push(beautifiedPayload.slice(dashes[i-1] || 0, dashIndex));
+      slices.push(beautifiedPayload.slice(dashes[i - 1] || 0, dashIndex));
       return slices;
-    }, []).concat([ beautifiedPayload.slice(dashes[dashes.length -1 ])]).join('-');
+    }, []).concat([ beautifiedPayload.slice(dashes[dashes.length - 1])]).join('-');
   }
 
   return beautifiedPayload;
