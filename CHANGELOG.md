@@ -1,3 +1,6 @@
+## 1.2.0
+* [#17: Migrate to CircleCI.](https://github.com/haensl/beacon-tool/issues/17)
+
 ## 1.1.3
 * [#15: Update dependencies.](https://github.com/haensl/beacon-tool/issues/15)
 * Internalize eslint configuration into `package.json`.
