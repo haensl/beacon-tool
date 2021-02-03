@@ -1,4 +1,4 @@
-# Beacon Tool [![CircleCI](https://circleci.com/gh/haensl/minify-inline-json.svg?style=svg)](https://circleci.com/gh/haensl/minify-inline-json)
+# Beacon Tool [![CircleCI](https://circleci.com/gh/haensl/beacon-tool.svg?style=svg)](https://circleci.com/gh/haensl/beacon-tool)
 
 Collection of bluetooth beacon signal utility functions.
 

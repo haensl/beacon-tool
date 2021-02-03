@@ -1,3 +1,6 @@
+## 1.2.1
+* [#19: Fix build patch.](https://github.com/haensl/beacon-tool/issues/19)
+
 ## 1.2.0
 * [#17: Migrate to CircleCI.](https://github.com/haensl/beacon-tool/issues/17)
 
