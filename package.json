@@ -1,11 +1,12 @@
 {
   "name": "beacon-tool",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Collection of bluetooth beaconing tools.",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint './lib/**/*.js'",
     "lint:ci": "eslint --format junit -o test-results/eslint/results.xml './lib/**/*.js'",
+    "prepare": "if [ ${NODE_ENV} != 'production' ]; then husky install; fi",
     "test": "mocha --recursive \"./lib/**/*.test.js\"",
     "tdd": "mocha --recursive --watch \"./lib/**/*.test.js\"",
     "test:ci": "mocha --recursive --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/results.xml \"./lib/**/*.test.js\""
@@ -24,11 +25,6 @@
     "extends": [
       "@haensl"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm test"
-    }
   },
   "keywords": [
     "beaconing",
@@ -62,7 +58,7 @@
     "@haensl/eslint-config": "^1.3.0",
     "chai": "^4.2.0",
     "eslint": "^8.5.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.4",
     "mocha": "^9.0.3",
     "mocha-junit-reporter": "^2.0.0"
   }
