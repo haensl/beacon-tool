@@ -1,6 +1,6 @@
 {
   "name": "beacon-tool",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Collection of bluetooth beaconing tools.",
   "main": "lib/index.js",
   "scripts": {
@@ -42,6 +42,7 @@
     "twitter": "@h_p_d",
     "url": "https://hpdietz.com"
   },
+  "funding": "https://github.com/sponsors/haensl",
   "engines": {
     "node": ">= 8.11.3"
   },
