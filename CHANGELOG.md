@@ -1,3 +1,6 @@
+## 1.2.6
+* [#31: Update dependencies.](https://github.com/haensl/beacon-tool/issues/31)
+
 ## 1.2.5
 * [#29: Add funding information.](https://github.com/haensl/beacon-tool/issues/29)
 * Update dependencies.
