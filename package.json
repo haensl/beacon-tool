@@ -1,6 +1,6 @@
 {
   "name": "beacon-tool",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Collection of bluetooth beaconing tools.",
   "main": "lib/index.js",
   "scripts": {
@@ -59,8 +59,8 @@
     "@haensl/eslint-config": "^1.3.0",
     "chai": "^4.2.0",
     "eslint": "^8.5.0",
-    "husky": "^7.0.4",
-    "mocha": "^9.0.3",
+    "husky": "^8.0.3",
+    "mocha": "^10.2.0",
     "mocha-junit-reporter": "^2.0.0"
   }
 }
